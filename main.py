@@ -10,12 +10,12 @@ import logging
 
 map_style = eval(open("mapconfig.json").read())
 sess = Session.builder.configs(st.secrets["snowflake"]).create()
-st.markdown("The color visualizes the average yearly precipitation (red: low precipitation, turquoise: high).", unsafe_allow_html=True)
-st.markdown("The width of hexagons visualizes the population density. For more details click legend icon.", unsafe_allow_html=True)
+sess.sql("ALTER SESSION SET GEOGRAPHY_OUTPUT_FORMAT='WKT'").collect()
 spatialfeatures = sess.table('grid_lte_coverage').select(col("grid"),col("lte_gaps"))
 logging.info('CUSTOM LOG: SnowPark DF is there')
 df = pd.DataFrame(spatialfeatures.collect())
 logging.info('CUSTOM LOG: Pandas df is there')
-map = KeplerGl()
+map = KeplerGl(config = map_style)
 map.add_data(data=df, name="data")
-keplergl_static(map, height = 600, width = 900, )
+
+keplergl_static(map, height = 600, width = 800)

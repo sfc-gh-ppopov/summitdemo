@@ -1,4 +1,5 @@
 snowflake_snowpark_python
+altair<5
 pandas==1.4.2
 geopandas==0.10.2
 shapely==1.8.2

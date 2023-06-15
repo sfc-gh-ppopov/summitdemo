@@ -36,7 +36,7 @@
                 "reversed": True
               },
               "coverage": 1,
-              "enable3d": True,
+              "enable3d": False,
               "sizeRange": [
                 0,
                 500
@@ -132,8 +132,8 @@
     "mapState": {
       "bearing": 24,
       "dragRotate": True,
-      "latitude": 39.27067191865806,
-      "longitude": -4.166166567649243,
+      "latitude": 52.21946399342579,
+      "longitude": 5.307063993936322,
       "pitch": 50,
       "zoom": 5.629891634127244,
       "isSplit": False
