@@ -5,7 +5,6 @@ from streamlit_keplergl import keplergl_static
 from snowflake.snowpark import Session
 from snowflake.snowpark.functions import col
 import logging
-from streamlit_option_menu import option_menu
 
 
 
