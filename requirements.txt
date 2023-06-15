@@ -1,4 +1,4 @@
-./snowflake_snowpark_python-0.6.0-py3-none-any.whl
+snowflake_snowpark_python
 pandas==1.4.2
 geopandas==0.10.2
 shapely==1.8.2
