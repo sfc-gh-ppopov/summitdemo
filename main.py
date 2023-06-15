@@ -16,6 +16,6 @@ spatialfeatures = sess.table('grid_lte_coverage').select(col("grid"),col("lte_ga
 logging.info('CUSTOM LOG: SnowPark DF is there')
 df = pd.DataFrame(spatialfeatures.collect())
 logging.info('CUSTOM LOG: Pandas df is there')
-map = KeplerGl(config = map_style)
+map = KeplerGl()
 map.add_data(data=df, name="data")
 keplergl_static(map, height = 600, width = 900, )
