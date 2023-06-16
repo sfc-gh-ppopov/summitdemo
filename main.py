@@ -7,10 +7,11 @@ from snowflake.snowpark.functions import col
 import logging
 
 
-st.title('Power grids report')
-st.text('In this report we will show you the promising areas for building our next')
-st.text('electricity line.')
-st.text("At first let\'s look at the following picture:")
+st.title('Power Grids Report')
+st.subheader('Summary:')
+st.text('In this report, we aim to identify the most promising areas for the construction of')
+st.text('our upcoming electricity line. At first let\'s look at the following visualization')
+st.text("which depicts areas without mobile network and the access to the electricity.")
 map_style = eval(open("mapconfig.json").read())
 sess = Session.builder.configs(st.secrets["snowflake"]).create()
 sess.sql("ALTER SESSION SET GEOGRAPHY_OUTPUT_FORMAT='WKT'").collect()
