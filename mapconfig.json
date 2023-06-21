@@ -340,10 +340,10 @@
     "mapState": {
       "bearing": 0,
       "dragRotate": False,
-      "latitude": 52.6694998406399,
-      "longitude": 5.940085611558777,
+      "latitude": 52.326978365198755,
+      "longitude": 5.891137030219806,
       "pitch": 0,
-      "zoom": 6.566547648625583,
+      "zoom": 6.609612099202762,
       "isSplit": False
     },
     "mapStyle": {
