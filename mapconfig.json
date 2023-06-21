@@ -121,7 +121,7 @@
             },
             "isVisible": True,
             "visConfig": {
-              "opacity": 0.8,
+              "opacity": 0.22,
               "strokeOpacity": 0.8,
               "thickness": 0.5,
               "strokeColor": [
@@ -340,10 +340,10 @@
     "mapState": {
       "bearing": 0,
       "dragRotate": False,
-      "latitude": 52.881036803679855,
-      "longitude": 6.821333921316884,
+      "latitude": 52.30055625838242,
+      "longitude": 4.646356626330969,
       "pitch": 0,
-      "zoom": 7.503351039179277,
+      "zoom": 6.241502878792242,
       "isSplit": False
     },
     "mapStyle": {
