@@ -5,15 +5,108 @@
       "filters": [],
       "layers": [
         {
+          "id": "ed3x4db",
+          "type": "geojson",
+          "config": {
+            "dataId": "search_result",
+            "label": "search_result",
+            "color": [
+              212, 91, 144
+            ],
+            "columns": {
+              "geojson": "LOCATION"
+            },
+            "isVisible": True,
+            "visConfig": {
+              "opacity": 1.0,
+              "strokeOpacity": 0.8,
+              "thickness": 0.5,
+              "strokeColor": None,
+              "colorRange": {
+                "name": "Global Warming",
+                "type": "sequential",
+                "category": "Uber",
+                "colors": [
+                  "#5A1846",
+                  "#900C3F",
+                  "#C70039",
+                  "#E3611C",
+                  "#F1920E",
+                  "#FFC300"
+                ]
+              },
+              "strokeColorRange": {
+                "name": "Global Warming",
+                "type": "sequential",
+                "category": "Uber",
+                "colors": [
+                  "#5A1846",
+                  "#900C3F",
+                  "#C70039",
+                  "#E3611C",
+                  "#F1920E",
+                  "#FFC300"
+                ]
+              },
+              "radius": 3,
+              "sizeRange": [
+                0,
+                10
+              ],
+              "radiusRange": [
+                0,
+                50
+              ],
+              "heightRange": [
+                0,
+                500
+              ],
+              "elevationScale": 5,
+              "stroked": False,
+              "filled": True,
+              "enable3d": False,
+              "wireframe": False
+            },
+            "hidden": False,
+            "textLabel": [
+              {
+                "field": None,
+                "color": [
+                  255,
+                  255,
+                  255
+                ],
+                "size": 18,
+                "offset": [
+                  0,
+                  0
+                ],
+                "anchor": "start",
+                "alignment": "center"
+              }
+            ]
+          },
+          "visualChannels": {
+            "colorField": None,
+            "colorScale": "quantile",
+            "sizeField": None,
+            "sizeScale": "linear",
+            "strokeColorField": None,
+            "strokeColorScale": "quantile",
+            "heightField": None,
+            "heightScale": "linear",
+            "radiusField": None,
+            "radiusScale": "linear"
+          }
+        },
+        {
           "id": "ed3x4do",
           "type": "geojson",
           "config": {
             "dataId": "cell_towers",
             "label": "cell_towers",
             "color": [
-              18,
-              100,
-              129
+              17, 86, 127
             ],
             "columns": {
               "geojson": "LOCATION"
@@ -101,6 +194,7 @@
             "radiusScale": "linear"
           }
         }
+        
       ],
       "interactionConfig": {
         "tooltip": {

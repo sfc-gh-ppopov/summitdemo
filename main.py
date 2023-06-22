@@ -18,17 +18,25 @@ map_style_6 = eval(open("./styles/mapconfig_6.json").read())
 sess = Session.builder.configs(st.secrets["snowflake"]).create()
 sess.sql("ALTER SESSION SET GEOGRAPHY_OUTPUT_FORMAT='WKT'").collect()
 
-st.subheader('Summary:')
-st.text('In this report, we aim to identify the most promising areas for the construction of')
-st.text('our upcoming electricity line. At first let\'s look at the following visualization')
-st.text("which depicts areas without mobile network and the access to the electricity.")
+st.subheader('Summary')
+st.write("""In this report, we aim to identify the most promising areas for the construction of
+our upcoming electricity line. At first let's look at the following visualization
+which depicts areas without mobile network and the access to the electricity.""")
 
 #=======================================
 st.subheader("Dataset 1: Cell towers")
 st.write("Load information about cell towers from OpenCellId dataset. For each tower we know location, and type of network.")
 cell_towers = sess.table('geolab.demotest.cell_towers_with_coverage').select(col("location"))
 cell_towers = pd.DataFrame(cell_towers.collect())
+
+search_result = sess.sql("""select location
+                            FROM geolab.demotest.cell_towers_with_coverage
+                            WHERE st_dwithin(location, to_geography('POINT(5.457835 52.132954)'),  5000)
+                        """);
+search_result = pd.DataFrame(search_result.collect())
+
 map1 = KeplerGl(config = map_style_1)
+map1.add_data(data=search_result, name="search_result")
 map1.add_data(data=cell_towers, name="cell_towers")
 
 keplergl_static(map1, height = 600)
@@ -85,7 +93,7 @@ keplergl_static(map5, height = 600)
 st.subheader("Areas where to build new towers")
 st.write("Add power grid data to the picture")
 
-grid_data = sess.table('geolab.demotest.grid_lte_coverage_viz').select(col("electricity_coverage_cut"))
+grid_data = sess.table('geolab.demotest.grid_lte_coverage_viz').select(col("electricity_coverage"))
 lte_gaps = sess.table('geolab.demotest.grid_lte_coverage_viz').select(col("where_to_build"))
 
 map6 = KeplerGl(config = map_style_6)

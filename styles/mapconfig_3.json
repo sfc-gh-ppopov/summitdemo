@@ -11,9 +11,7 @@
             "dataId": "boundaries",
             "label": "boundaries",
             "color": [
-              36,
-              191,
-              242
+              41, 181, 232
             ],
             "columns": {
               "geojson": "GEOG"
