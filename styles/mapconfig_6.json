@@ -104,8 +104,6 @@
             "radiusField": None,
             "radiusScale": "linear"
           }
-<<<<<<< Updated upstream:mapconfig.json
-=======
         },
         {
           "id": "h2vfkm",
@@ -207,7 +205,6 @@
             "radiusField": None,
             "radiusScale": "linear"
           }
->>>>>>> Stashed changes:styles/mapconfig_6.json
         }
       ],
       "interactionConfig": {
