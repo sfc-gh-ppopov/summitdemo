@@ -11,9 +11,9 @@
             "dataId": "grid_data",
             "label": "grid_data",
             "color": [
-              18,
-              100,
-              129
+              36,
+              191,
+              242
             ],
             "columns": {
               "geojson": "ELECTRICITY_COVERAGE_CUT"
@@ -24,9 +24,9 @@
               "strokeOpacity": 0.25,
               "thickness": 0.5,
               "strokeColor": [
-                18,
-                100,
-                129
+                36,
+                191,
+                242
               ],
               "colorRange": {
                 "name": "Global Warming",
