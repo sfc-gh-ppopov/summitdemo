@@ -11,22 +11,22 @@
             "dataId": "grid_data",
             "label": "grid_data",
             "color": [
-              102,
-              102,
-              102
+              18,
+              100,
+              129
             ],
             "columns": {
               "geojson": "ELECTRICITY_COVERAGE_CUT"
             },
             "isVisible": True,
             "visConfig": {
-              "opacity": 0.8,
-              "strokeOpacity": 0.8,
+              "opacity": 0.25,
+              "strokeOpacity": 0.25,
               "thickness": 0.5,
               "strokeColor": [
-                102,
-                102,
-                102
+                18,
+                100,
+                129
               ],
               "colorRange": {
                 "name": "Global Warming",
@@ -112,22 +112,22 @@
             "dataId": "lte_gaps",
             "label": "lte_gaps",
             "color": [
-              36,
-              191,
-              242
+              102,
+              102,
+              102
             ],
             "columns": {
               "geojson": "WHERE_TO_BUILD"
             },
             "isVisible": True,
             "visConfig": {
-              "opacity": 0.8,
-              "strokeOpacity": 0.8,
+              "opacity": 0.25,
+              "strokeOpacity": 0.25,
               "thickness": 0.5,
               "strokeColor": [
-                36,
-                191,
-                242
+                102,
+                102,
+                102
               ],
               "colorRange": {
                 "name": "Global Warming",
