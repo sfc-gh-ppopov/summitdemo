@@ -4,7 +4,6 @@ from keplergl import KeplerGl
 from streamlit_keplergl import keplergl_static
 from snowflake.snowpark import Session
 from snowflake.snowpark.functions import col
-import logging
 
 
 st.title('Power Grids Report')
