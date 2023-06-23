@@ -6,12 +6,13 @@ from snowflake.snowpark import Session
 from snowflake.snowpark.functions import col
 
 
-st.title('Power Grids Report')
+st.title('Find best place to build a cell tower')
 
 map_style_1 = eval(open("./styles/mapconfig_1.json").read())
 map_style_2 = eval(open("./styles/mapconfig_2.json").read())
 map_style_3 = eval(open("./styles/mapconfig_3.json").read())
 map_style_4 = eval(open("./styles/mapconfig_4.json").read())
+#map_style_4_1 = eval(open("./styles/mapconfig_4_1.json").read())
 map_style_5 = eval(open("./styles/mapconfig_5.json").read())
 map_style_6 = eval(open("./styles/mapconfig_6.json").read())
 
@@ -20,18 +21,19 @@ sess.sql("ALTER SESSION SET GEOGRAPHY_OUTPUT_FORMAT='WKT'").collect()
 
 st.subheader('Summary')
 st.write("""In this report, we aim to identify the most promising areas for the construction of
-our upcoming electricity line. At first let's look at the following visualization
-which depicts areas without mobile network and the access to the electricity.""")
+the new cell towers. Such areas need to satisfy two conditions:""")
+st.markdown("1. A tower is needed there, because there is no 4G signal in that area")
+st.markdown("2. A tower can be built there, because there is electricity line nearby""")
 
 #=======================================
 st.subheader("Dataset 1: Cell towers")
-st.write("Load information about cell towers from OpenCellId dataset. For each tower we know location, and type of network.")
+st.write("Load information about cell towers from OpenCellId dataset. For each tower we know location, range and type of network.")
 cell_towers = sess.table('geolab.demotest.cell_towers_with_coverage').select(col("location"))
 cell_towers = pd.DataFrame(cell_towers.collect())
 
 search_result = sess.sql("""select location
                             FROM geolab.demotest.cell_towers_with_coverage
-                            WHERE st_dwithin(location, to_geography('POINT(5.457835 52.132954)'),  5000)
+                            WHERE st_dwithin(location, st_point(5.457835, 52.132954),  5000)
                         """);
 search_result = pd.DataFrame(search_result.collect())
 
@@ -75,6 +77,19 @@ map4 = KeplerGl(config = map_style_4)
 map4.add_data(data=cell_towers, name="cell_towers")
 
 keplergl_static(map4, height = 600)
+
+#=======================================
+st.subheader("Zones in proximity of power line")
+st.write("Here we used ST_BUFFER to find all areas that are close to power line.")
+
+grid_data = sess.sql("""select buffer_geog as ELECTRICITY_COVERAGE
+                            FROM geolab.demotest.nl_cables_station_viz
+                            WHERE st_dwithin(geog, st_point(6.631367899816269, 53.1589421431878),  30000)
+                        """);
+grid_data = pd.DataFrame(grid_data.collect())
+map4_1 = KeplerGl(config = map_style_6)
+map4_1.add_data(data=grid_data, name="grid_data")
+keplergl_static(map4_1, height = 600)
 
 #=======================================
 st.subheader("Cell coverage per province")
