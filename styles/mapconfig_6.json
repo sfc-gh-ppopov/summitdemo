@@ -11,7 +11,9 @@
             "dataId": "grid_data",
             "label": "grid_data",
             "color": [
-              138, 153, 158
+              138, 
+              153, 
+              158
             ],
             "columns": {
               "geojson": "ELECTRICITY_COVERAGE"
