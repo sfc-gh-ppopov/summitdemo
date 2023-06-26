@@ -11,9 +11,7 @@
             "dataId": "cell_towers",
             "label": "cell_towers",
             "color": [
-              18,
-              100,
-              129
+              17, 86, 127
             ],
             "columns": {
               "geojson": "COVERAGE"
@@ -24,9 +22,7 @@
               "strokeOpacity": 0.15,
               "thickness": 0.3,
               "strokeColor": [
-                18,
-                100,
-                129
+                17, 86, 127
               ],
               "colorRange": {
                 "name": "Global Warming",

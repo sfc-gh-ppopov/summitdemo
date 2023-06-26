@@ -11,10 +11,8 @@
             "dataId": "electricity_coverage",
             "label": "electricity_coverage",
             "color": [
-              102,
-              102,
-              102
-            ],
+              138, 153, 158
+                        ],
             "columns": {
               "geojson": "GEOG"
             },

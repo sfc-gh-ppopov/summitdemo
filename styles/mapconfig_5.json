@@ -11,9 +11,7 @@
             "dataId": "lte_coverage",
             "label": "lte_coverage",
             "color": [
-              36,
-              191,
-              242
+              41, 181, 232
             ],
             "columns": {
               "geojson": "LTE_COVERAGE"
@@ -24,9 +22,7 @@
               "strokeOpacity": 0.8,
               "thickness": 0.5,
               "strokeColor": [
-                36,
-                191,
-                242
+                41, 181, 232
               ],
               "colorRange": {
                 "name": "Global Warming",
@@ -112,9 +108,7 @@
             "dataId": "lte_gaps",
             "label": "lte_gaps",
             "color": [
-              102,
-              102,
-              102
+              255, 159, 54
             ],
             "columns": {
               "geojson": "WHERE_TO_BUILD"
@@ -125,9 +119,7 @@
               "strokeOpacity": 0.8,
               "thickness": 0.5,
               "strokeColor": [
-                102,
-                102,
-                102
+                255, 159, 54
               ],
               "colorRange": {
                 "name": "Global Warming",
