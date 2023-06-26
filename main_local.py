@@ -16,8 +16,8 @@ map_style_4 = eval(open("./styles/mapconfig_4.json").read())
 map_style_5 = eval(open("./styles/mapconfig_5.json").read())
 map_style_6 = eval(open("./styles/mapconfig_6.json").read())
 
-sess = Session.builder.configs(st.secrets["snowflake"]).create()
-sess.sql("ALTER SESSION SET GEOGRAPHY_OUTPUT_FORMAT='WKT'").collect()
+#sess = Session.builder.configs(st.secrets["snowflake"]).create()
+#sess.sql("ALTER SESSION SET GEOGRAPHY_OUTPUT_FORMAT='WKT'").collect()
 
 st.subheader('Summary:')
 st.text('In this report, we aim to identify the most promising areas for the construction of')

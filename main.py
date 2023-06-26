@@ -93,3 +93,5 @@ map6.add_data(data=pd.DataFrame(grid_data.collect()), name="grid_data")
 map6.add_data(data=pd.DataFrame(lte_gaps.collect()), name="lte_gaps")
 
 keplergl_static(map6, height = 600)
+
+sess.close()
