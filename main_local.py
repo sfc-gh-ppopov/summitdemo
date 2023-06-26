@@ -19,20 +19,25 @@ map_style_6 = eval(open("./styles/mapconfig_6.json").read())
 #sess = Session.builder.configs(st.secrets["snowflake"]).create()
 #sess.sql("ALTER SESSION SET GEOGRAPHY_OUTPUT_FORMAT='WKT'").collect()
 
-st.subheader('Summary:')
-st.text('In this report, we aim to identify the most promising areas for the construction of')
-st.text('our upcoming electricity line. At first let\'s look at the following visualization')
-st.text("which depicts areas without mobile network and the access to the electricity.")
+st.subheader('Summary')
+st.write("""In this report, we aim to identify the most promising areas for the construction of
+the new cell towers. Such areas need to satisfy two conditions:""")
+st.markdown("1. A tower is needed there, because there is no 4G signal in that area")
+st.markdown("2. A tower can be built there, because there is electricity line nearby""")
 
 #=======================================
 st.subheader("Dataset 1: Cell towers")
-st.write("Load information about cell towers from OpenCellId dataset. For each tower we know location, and type of network.")
+st.write("Load information about cell towers from OpenCellId dataset. For each tower we know location, range and type of network.")
 
-df_1 = pd.read_csv('./datasets/dataset_1.csv')
-data_1 = df_1[['LOCATION']]
+df_1_1 = pd.read_csv('./datasets/dataset_1_1.csv')
+data_1_1 = df_1_1[['LOCATION']]
+
+df_1_2 = pd.read_csv('./datasets/dataset_1_2.csv')
+data_1_2 = df_1_2[['LOCATION']]
 
 map1 = KeplerGl(config = map_style_1)
-map1.add_data(data=data_1, name="cell_towers")
+map1.add_data(data=data_1_1, name="cell_towers")
+map1.add_data(data=data_1_2, name="search_result")
 
 keplergl_static(map1, height = 600)
 
@@ -65,15 +70,27 @@ keplergl_static(map3, height = 600)
 st.subheader("Cell towers with coverage polygons")
 st.write("Show polygons of each cell tower")
 
-df_4 = pd.read_csv('./datasets/dataset_4.csv')
-data_4 = df_4[['COVERAGE']]
+df_4_1 = pd.read_csv('./datasets/dataset_4_1.csv')
+data_4_1 = df_4_1[['COVERAGE']]
 
-map4 = KeplerGl(config = map_style_4)
-map4.add_data(data=data_4, name="cell_towers")
+map4_1 = KeplerGl(config = map_style_4)
+map4_1.add_data(data=data_4_1, name="cell_towers")
 
-keplergl_static(map4, height = 600)
+keplergl_static(map4_1, height = 600)
 
 #=======================================
+st.subheader("Zones in proximity of power line")
+st.write("Here we used ST_BUFFER to find all areas that are close to power line.")
+
+df_4_2 = pd.read_csv('./datasets/dataset_4_2.csv')
+data_4_2 = df_4_2[['ELECTRICITY_COVERAGE']]
+
+map4_2 = KeplerGl(config = map_style_6)
+map4_2.add_data(data=data_4_2, name="grid_data")
+
+keplergl_static(map4_2, height = 600)
+
+#======================================
 st.subheader("Cell coverage per province")
 st.write("Union all coverage polygons")
 
@@ -92,7 +109,7 @@ st.subheader("Areas where to build new towers")
 st.write("Add power grid data to the picture")
 
 df_6 = pd.read_csv('./datasets/dataset_6.csv')
-data_6_1 = df_6[['ELECTRICITY_COVERAGE_CUT']]
+data_6_1 = df_6[['ELECTRICITY_COVERAGE']]
 data_6_2 = df_6[['WHERE_TO_BUILD']]
 
 map6 = KeplerGl(config = map_style_6)
